@@ -37,7 +37,7 @@ export async function createEditCabin(newCabin, id) {
   //1.A create cabin
   if (!id) query = query.insert([{ ...newCabin, image: imagePath }]);
 
-  //1.B Edit cabin
+  //1.B Edit cabin and checks if there image
   if (id) query = query.update({ ...newCabin, image: imagePath }).eq("id", id);
   const { data, error } = await query.select().single();
 
