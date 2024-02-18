@@ -12,8 +12,6 @@ export async function getCabins() {
 }
 
 export async function createEditCabin(newCabin, id) {
-  console.log(newCabin, id);
-
   //receives data with supabase on it, to check if theres path already
   const hasImagePath = newCabin.image?.startsWith?.(supabaseUrl);
 
@@ -47,6 +45,10 @@ export async function createEditCabin(newCabin, id) {
   }
 
   //2. upload image
+
+  //checks if theres image, if so return data immediately
+  if (hasImagePath) return data;
+  
   const { error: storageError } = await supabase.storage
     .from("cabin-images")
     .upload(imageName, newCabin.image);
