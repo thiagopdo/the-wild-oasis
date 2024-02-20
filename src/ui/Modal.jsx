@@ -59,7 +59,9 @@ const ModalContext = createContext();
 function Modal({ children }) {
   const [openName, setOpenName] = useState("");
 
-  const close = () => setOpenName("");
+  const close = () => {
+    setOpenName("");
+  };
   const open = setOpenName;
 
   return (
