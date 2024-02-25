@@ -12,6 +12,7 @@ import { useBooking } from "../bookings/useBooking";
 import Spinner from "../../ui/Spinner";
 import { useEffect, useState } from "react";
 import Checkbox from "../../ui/Checkbox";
+import { formatCurrency } from "../../utils/helpers";
 
 const Box = styled.div`
   /* Box */
@@ -58,7 +59,8 @@ function CheckinBooking() {
           disabled={confirmPaid}
           id="confirm"
         >
-          I confirm that {guests.fullName} has paid the amount
+          I confirm that {guests.fullName} has paid the amount of
+          {formatCurrency(totalPrice)}
         </Checkbox>
       </Box>
 
