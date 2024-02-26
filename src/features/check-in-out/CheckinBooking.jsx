@@ -51,10 +51,21 @@ function CheckinBooking() {
   const optionalBreakfastPrice =
     settings.breakfastPrice * numGuests * numNights;
 
+//does the checkin functionality as long as breakfast
   function handleCheckin() {
     if (!confirmPaid) return;
-    
-    checkin(bookingId);
+    if (addBreakfast) {
+      checkin({
+        bookingId,
+        breakfast: {
+          hasBreakfast: true,
+          extrasPrice: optionalBreakfastPrice,
+          totalPrice: totalPrice + optionalBreakfastPrice,
+        },
+      });
+    } else {
+      checkin({ bookingId, breakfast: {} });
+    }
   }
 
   return (
