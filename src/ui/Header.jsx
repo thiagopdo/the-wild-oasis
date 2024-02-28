@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import Logout from "../features/authentication/Logout";
+import HeaderMenu from "./HeaderMenu";
+import UserAvatar from "../features/authentication/UserAvatar";
 
 const StylerHeader = styled.header`
   background-color: var(--color-grey-0);
@@ -10,7 +11,8 @@ const StylerHeader = styled.header`
 function Header() {
   return (
     <StylerHeader>
-      <Logout />
+      <UserAvatar />
+      <HeaderMenu />
     </StylerHeader>
   );
 }
